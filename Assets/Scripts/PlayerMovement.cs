@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
@@ -6,8 +7,8 @@ using UnityEngine.Serialization;
 
 public class PlayerMovement : MonoBehaviour
 {
-    //FUTURE IMPROVEMENTS:
-    //Change the way of reference the camera every time you walk.
+    //Como funciona a camera: Basicamente toda colisão trigger com os lugares para trocar de camera, ele chama o método de trocar a referencia do jogador, assim atualiza qual a frente de fato.
+    //Economiza muito mais do que, ficar chamando no update toda vez que o jogador andasse.
     
     [Header("Speed value")]
     [SerializeField] private float defaultSpeed = 200f;
@@ -46,47 +47,41 @@ public class PlayerMovement : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _currentSpeed = defaultSpeed;
-        GetNewCameraReference();
+        ChangeCameraReference();
     }
 
     private void Update()
     {
         //gravity add.
-        _rb.AddForce(Vector3.down * gravity);
+        //_rb.AddForce(Vector3.down * gravity);
+        
+        
+        //Trocar do updpate aqui.
         //Run system.
         if (run.action.IsPressed() && IsWalking)
         {
             IsRunning = true;
             _currentSpeed = runSpeed;
         }
-        else
+        else if(run.action.WasReleasedThisFrame())
         {
             IsRunning = false;
             _currentSpeed = defaultSpeed;
         }
+        
         //Input system.
         _moveInput = move.action.ReadValue<Vector2>();
 
-        //GetCameraReference.
-        if (_moveInput.magnitude > 0.1f)
-        {
-            IsWalking = true;
-            if (Camera.main != null)
-            {
-                if (Math.Abs(_moveInput.x - _lastHorizontalInput) > tolerance || Math.Abs(_moveInput.y - _lastVerticalInput) > tolerance)
-                {
-                    GetNewCameraReference();
-                }
-                else if ((Math.Abs(_moveInput.x - _lastHorizontalInput) < tolerance || Math.Abs(_moveInput.y - _lastVerticalInput) < tolerance) && move.action.triggered)
-                {
-                    GetNewCameraReference();
-                }
-            }
-        }
-        else
+        //State change.
+        if (_moveInput.magnitude < 0.1f)
         {
             IsWalking = false;
         }
+        else
+        {
+            IsWalking = true;
+        }
+        //InputNormalize.
         _moveInput = MapJoystickInput();
     }
    //Move direction calculation.
@@ -109,8 +104,24 @@ public class PlayerMovement : MonoBehaviour
     {
         _rb.velocity = _moveDirection * (_currentSpeed * Time.fixedDeltaTime);
     }
-    //Get camera reference method.
-    void GetNewCameraReference()
+    //Get camera reference method(Chama esse script, toda colisão trigger).
+    public void GetNewCameraReference()
+    {
+        if (Camera.main != null)
+        {
+            if (Math.Abs(_moveInput.x - _lastHorizontalInput) > tolerance ||
+                Math.Abs(_moveInput.y - _lastVerticalInput) > tolerance)
+            {
+                ChangeCameraReference();
+            }
+            else if ((Math.Abs(_moveInput.x - _lastHorizontalInput) < tolerance ||
+                      Math.Abs(_moveInput.y - _lastVerticalInput) < tolerance) && move.action.triggered)
+            {
+                ChangeCameraReference();
+            }
+        }
+    }
+    private void ChangeCameraReference()
     {
         _viewForward = Camera.main.GetComponent<CameraFront>().GetRealFront().forward;
         _viewRight = Camera.main.GetComponent<CameraFront>().GetRealFront().right;
