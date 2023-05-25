@@ -46,9 +46,9 @@ public partial class @PlayerInputController : IInputActionCollection2, IDisposab
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Handwatch"",
+                    ""name"": ""Interact"",
                     ""type"": ""Button"",
-                    ""id"": ""85d1e6c6-36c9-4efc-b0e7-382a6b1006f8"",
+                    ""id"": ""8b981a08-4397-44b6-a917-d898a38f6f5e"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -190,23 +190,23 @@ public partial class @PlayerInputController : IInputActionCollection2, IDisposab
                 },
                 {
                     ""name"": """",
-                    ""id"": ""02b1fcd6-a8dd-4b4b-941f-a38dac2673fb"",
-                    ""path"": ""<Keyboard>/r"",
+                    ""id"": ""719c63dd-8af7-47b1-bc93-146008cac8b2"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Handwatch"",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""42a2c4b0-66f3-42f5-bd42-65dc050ad45c"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""id"": ""331a1dbc-1040-4206-ad24-6202f22dae87"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Handwatch"",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -219,7 +219,7 @@ public partial class @PlayerInputController : IInputActionCollection2, IDisposab
         m_MordernController = asset.FindActionMap("MordernController", throwIfNotFound: true);
         m_MordernController_Move = m_MordernController.FindAction("Move", throwIfNotFound: true);
         m_MordernController_Run = m_MordernController.FindAction("Run", throwIfNotFound: true);
-        m_MordernController_Handwatch = m_MordernController.FindAction("Handwatch", throwIfNotFound: true);
+        m_MordernController_Interact = m_MordernController.FindAction("Interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -281,14 +281,14 @@ public partial class @PlayerInputController : IInputActionCollection2, IDisposab
     private IMordernControllerActions m_MordernControllerActionsCallbackInterface;
     private readonly InputAction m_MordernController_Move;
     private readonly InputAction m_MordernController_Run;
-    private readonly InputAction m_MordernController_Handwatch;
+    private readonly InputAction m_MordernController_Interact;
     public struct MordernControllerActions
     {
         private @PlayerInputController m_Wrapper;
         public MordernControllerActions(@PlayerInputController wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_MordernController_Move;
         public InputAction @Run => m_Wrapper.m_MordernController_Run;
-        public InputAction @Handwatch => m_Wrapper.m_MordernController_Handwatch;
+        public InputAction @Interact => m_Wrapper.m_MordernController_Interact;
         public InputActionMap Get() { return m_Wrapper.m_MordernController; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -304,9 +304,9 @@ public partial class @PlayerInputController : IInputActionCollection2, IDisposab
                 @Run.started -= m_Wrapper.m_MordernControllerActionsCallbackInterface.OnRun;
                 @Run.performed -= m_Wrapper.m_MordernControllerActionsCallbackInterface.OnRun;
                 @Run.canceled -= m_Wrapper.m_MordernControllerActionsCallbackInterface.OnRun;
-                @Handwatch.started -= m_Wrapper.m_MordernControllerActionsCallbackInterface.OnHandwatch;
-                @Handwatch.performed -= m_Wrapper.m_MordernControllerActionsCallbackInterface.OnHandwatch;
-                @Handwatch.canceled -= m_Wrapper.m_MordernControllerActionsCallbackInterface.OnHandwatch;
+                @Interact.started -= m_Wrapper.m_MordernControllerActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_MordernControllerActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_MordernControllerActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_MordernControllerActionsCallbackInterface = instance;
             if (instance != null)
@@ -317,9 +317,9 @@ public partial class @PlayerInputController : IInputActionCollection2, IDisposab
                 @Run.started += instance.OnRun;
                 @Run.performed += instance.OnRun;
                 @Run.canceled += instance.OnRun;
-                @Handwatch.started += instance.OnHandwatch;
-                @Handwatch.performed += instance.OnHandwatch;
-                @Handwatch.canceled += instance.OnHandwatch;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -328,6 +328,6 @@ public partial class @PlayerInputController : IInputActionCollection2, IDisposab
     {
         void OnMove(InputAction.CallbackContext context);
         void OnRun(InputAction.CallbackContext context);
-        void OnHandwatch(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
 }

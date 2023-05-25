@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 
 public class LightFire : MonoBehaviour
 {
+    //Apenas testes.
     private Light light;
 
     private void Awake()

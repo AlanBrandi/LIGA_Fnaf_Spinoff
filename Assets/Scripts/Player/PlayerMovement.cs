@@ -9,21 +9,29 @@ public class PlayerMovement : MonoBehaviour
     //Como funciona a camera: Basicamente toda colisão trigger com os lugares para trocar de camera, ele chama o método de trocar a referencia do jogador, assim atualiza qual a frente de fato.
     //Economiza muito mais do que, ficar chamando no update toda vez que o jogador andasse.
     
+    
+    //Player simple state.
+    public bool IsRunning { get; private set; }
+    public bool IsWalking { get; private set; }
+    
+    //Speed config.
     [Header("Speed value")]
     [SerializeField] private float defaultSpeed = 200f;
     [SerializeField] private float runSpeed = 400f;
 
     private float _currentSpeed;
 
+    //Gravity value.
     [Header("Gravity")]
     [SerializeField] private float gravity;
     
+    //InputSystem
     [Header("InputSystem")]
-    [SerializeField] private InputActionReference move;
-    [SerializeField] private InputActionReference run;
-    
+    [SerializeField] private InputActionReference move, run;
+
+    //Tolerance
     [Header("Tolerance value")] 
-    [SerializeField] float tolerance;
+    [SerializeField] private float tolerance;
     
     //Last input variables.
     private float _lastHorizontalInput = 0f;
@@ -37,11 +45,7 @@ public class PlayerMovement : MonoBehaviour
     
     //Mechanics variables
     private bool _changedCamera;
-
-    //Player simple state.
-    public bool IsRunning { get; private set; }
-    public bool IsWalking { get; private set; }
-
+    
     //Rigidbody.
     private Rigidbody _rb;
 
@@ -59,18 +63,9 @@ public class PlayerMovement : MonoBehaviour
     {
         //gravity add.
         _rb.AddForce(Vector3.down * gravity);
-        
-        //Run system.
-        if (run.action.IsPressed() && IsWalking)
-        {
-            IsRunning = true;
-            _currentSpeed = runSpeed;
-        }
-        else if(run.action.WasReleasedThisFrame())
-        {
-            IsRunning = false;
-            _currentSpeed = defaultSpeed;
-        }
+
+        //Check if player is running or walking and set the variables.
+        CheckPlayerState();
         
         //Input system.
         _moveInput = move.action.ReadValue<Vector2>();
@@ -90,15 +85,6 @@ public class PlayerMovement : MonoBehaviour
                 ChangeCameraReference();
             }
         }
-        //State change.
-        if (_moveInput.magnitude < 0.1f)
-        {
-            IsWalking = false;
-        }
-        else
-        {
-            IsWalking = true;
-        }
         //InputNormalize.
         _moveInput = MapJoystickInput();
     }
@@ -117,6 +103,29 @@ public class PlayerMovement : MonoBehaviour
         Move();
     }
 
+    //State check.
+    private void CheckPlayerState()
+    {
+        if (run.action.IsPressed() && IsWalking)
+        {
+            IsRunning = true;
+            _currentSpeed = runSpeed;
+        }
+        else if(run.action.WasReleasedThisFrame())
+        {
+            IsRunning = false;
+            _currentSpeed = defaultSpeed;
+        }
+        if (_moveInput.magnitude > 0.3)
+        {
+            IsWalking = true;
+        }
+        else
+        {
+            IsWalking = false;
+        }
+    }
+    
     //Move method.
     private void Move()
     {
