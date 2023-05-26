@@ -8,8 +8,10 @@ public class Switch : MonoBehaviour
 {
    //VERSÃO 0.1
    //FALTA ORGANIZAR ETC.
+   public bool counted = false;
+   
    private Animator _animator;
-   private bool _isActive = false;
+   private bool _isActive = false; 
 
    private void Awake()
    {
@@ -22,13 +24,12 @@ public class Switch : MonoBehaviour
       {
          _animator.SetBool("Active", true);
          _isActive = true;
-         SetAsActive();
          //playSound
       }
    }
 
-   private void SetAsActive()
+   public bool IsActive()
    {
-      //pegar o generador manager e dar set como ativado.
+      return _isActive;
    }
 }
