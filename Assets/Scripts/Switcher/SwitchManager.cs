@@ -3,13 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SwitchManager : MonoBehaviour
 {
+    //VERSÃO 1
+    //FALTA COMENTAR.
     [Header("Switcher config")]
     [SerializeField] private float timeToWait = 1f;
     [SerializeField] private List<Transform> spawnLocation;
     [SerializeField] private GameObject switcherGO;
+    
+    [HideInInspector]
+    public UnityEvent<int> onSwitchersOnChanged;
     
     private List<Switch> _switchers;
     private int _switchersOn = 0;
@@ -72,20 +78,31 @@ public class SwitchManager : MonoBehaviour
                 switcher.counted = true;
             }
         }
-
         switch (_switchersOn)
         {
             case 0:
+                NotifySwitchers();
                 break;
             case 1:
+                NotifySwitchers();
                 break;
             case 2:
+                NotifySwitchers();
                 break;
             case 3:
+                NotifySwitchers();
+                break;
+            case 4:
+                NotifySwitchers();
                 break;
             case 5:
+                NotifySwitchers();
                 StopCoroutine(nameof(CheckSwitchersActive));
                 break;
         }
+    }
+    private void NotifySwitchers()
+    {
+        onSwitchersOnChanged.Invoke(_switchersOn);
     }
 }
