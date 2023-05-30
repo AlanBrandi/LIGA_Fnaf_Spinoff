@@ -48,7 +48,7 @@ public class PlayerMovementTank : MonoBehaviour
 
     private void PlayerWalk(Vector2 yInput)
     {
-        _currentSpeed = run.action.WasPerformedThisFrame() ? runSpeed : moveSpeed; //Não está funcionando arrumar.
+        _currentSpeed = run.action.IsPressed() ? runSpeed : moveSpeed;
         float moveZ = yInput.y * _currentSpeed;
         float maxSpeed = Mathf.Lerp(0, _currentSpeed, 0.8f);
         float currentSpeed = Mathf.MoveTowards(_currentSpeed, maxSpeed, Time.deltaTime);
