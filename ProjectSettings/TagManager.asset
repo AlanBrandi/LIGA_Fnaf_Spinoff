@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CameraZone
   - Switch
+  - Door
   layers:
   - Default
   - TransparentFX

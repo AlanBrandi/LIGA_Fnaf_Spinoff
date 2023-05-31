@@ -14,7 +14,8 @@ public class Interact : MonoBehaviour
 
    private bool _canInteract;
    private PlayerInput _playerInput;
-   private RaycastHit chacheHit;
+   private RaycastHit cacheHit;
+   private RaycastHit nullHit;
 
    private void Awake()
    {
@@ -39,8 +40,18 @@ public class Interact : MonoBehaviour
          if (hit.collider.CompareTag("Switch") || hit.collider.CompareTag("Door"))
          {
             _canInteract = true;
-            chacheHit = hit;
-         } 
+            cacheHit = hit;
+         }
+         else
+         {
+            _canInteract = true;
+            cacheHit = new RaycastHit();
+         }
+      }
+      else
+      {
+         _canInteract = true;
+         cacheHit = new RaycastHit();
       }
    }
 
@@ -48,13 +59,13 @@ public class Interact : MonoBehaviour
    {
       if (_canInteract)
       {
-         switch (chacheHit.collider.tag)
+         switch (cacheHit.collider.tag)
          {
             case "Switch":
-               chacheHit.collider.GetComponent<Switch>().ActivateSwitch();
+               cacheHit.collider.GetComponent<Switch>().ActivateSwitch();
                break;
             case "Door":
-               //check qual dor é, e ativa.
+               cacheHit.collider.GetComponent<Door>().OpenDoor();
                break;
          }
       }

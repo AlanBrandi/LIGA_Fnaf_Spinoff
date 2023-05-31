@@ -9,7 +9,7 @@ public class SwitchCamera : MonoBehaviour
     //Get current camera.
     private GameObject currentCamera;
     //Collision with player.
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))
         {
