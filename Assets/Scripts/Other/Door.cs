@@ -11,13 +11,13 @@ public class Door : MonoBehaviour
     [SerializeField] private GameObject[] newPosition;
     [SerializeField] private GameObject player;
 
-    private bool opened;
+    private bool _opened;
     public void OpenDoor()
     {
-        if (!opened)
+        if (!_opened)
         {
             openingDoor.SetActive(true);
-            opened = true;
+            _opened = true;
             Invoke(nameof(ChangePlayerPosition), 3.68f); 
         }
     }
@@ -39,7 +39,7 @@ public class Door : MonoBehaviour
         if (farthestPosition != null)
         {
             player.transform.position = farthestPosition.position;
-            opened = false;
+            _opened = false;
         }
     }
 }

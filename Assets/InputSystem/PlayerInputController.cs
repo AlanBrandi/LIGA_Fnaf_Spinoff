@@ -53,6 +53,15 @@ public partial class @PlayerInputController : IInputActionCollection2, IDisposab
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Flashlight"",
+                    ""type"": ""Button"",
+                    ""id"": ""831c2021-0a14-4f2a-8149-fcad2acadbea"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -209,6 +218,28 @@ public partial class @PlayerInputController : IInputActionCollection2, IDisposab
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9fe9bb3b-97c8-4758-a64f-aeefc4d9d26e"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Flashlight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4a570d78-0b47-4d8b-84fc-6ccb287d27ea"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Flashlight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -220,6 +251,7 @@ public partial class @PlayerInputController : IInputActionCollection2, IDisposab
         m_MordernController_Move = m_MordernController.FindAction("Move", throwIfNotFound: true);
         m_MordernController_Run = m_MordernController.FindAction("Run", throwIfNotFound: true);
         m_MordernController_Interact = m_MordernController.FindAction("Interact", throwIfNotFound: true);
+        m_MordernController_Flashlight = m_MordernController.FindAction("Flashlight", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -282,6 +314,7 @@ public partial class @PlayerInputController : IInputActionCollection2, IDisposab
     private readonly InputAction m_MordernController_Move;
     private readonly InputAction m_MordernController_Run;
     private readonly InputAction m_MordernController_Interact;
+    private readonly InputAction m_MordernController_Flashlight;
     public struct MordernControllerActions
     {
         private @PlayerInputController m_Wrapper;
@@ -289,6 +322,7 @@ public partial class @PlayerInputController : IInputActionCollection2, IDisposab
         public InputAction @Move => m_Wrapper.m_MordernController_Move;
         public InputAction @Run => m_Wrapper.m_MordernController_Run;
         public InputAction @Interact => m_Wrapper.m_MordernController_Interact;
+        public InputAction @Flashlight => m_Wrapper.m_MordernController_Flashlight;
         public InputActionMap Get() { return m_Wrapper.m_MordernController; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -307,6 +341,9 @@ public partial class @PlayerInputController : IInputActionCollection2, IDisposab
                 @Interact.started -= m_Wrapper.m_MordernControllerActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_MordernControllerActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_MordernControllerActionsCallbackInterface.OnInteract;
+                @Flashlight.started -= m_Wrapper.m_MordernControllerActionsCallbackInterface.OnFlashlight;
+                @Flashlight.performed -= m_Wrapper.m_MordernControllerActionsCallbackInterface.OnFlashlight;
+                @Flashlight.canceled -= m_Wrapper.m_MordernControllerActionsCallbackInterface.OnFlashlight;
             }
             m_Wrapper.m_MordernControllerActionsCallbackInterface = instance;
             if (instance != null)
@@ -320,6 +357,9 @@ public partial class @PlayerInputController : IInputActionCollection2, IDisposab
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @Flashlight.started += instance.OnFlashlight;
+                @Flashlight.performed += instance.OnFlashlight;
+                @Flashlight.canceled += instance.OnFlashlight;
             }
         }
     }
@@ -329,5 +369,6 @@ public partial class @PlayerInputController : IInputActionCollection2, IDisposab
         void OnMove(InputAction.CallbackContext context);
         void OnRun(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnFlashlight(InputAction.CallbackContext context);
     }
 }
