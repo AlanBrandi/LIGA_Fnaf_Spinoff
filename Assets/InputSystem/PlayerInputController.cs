@@ -242,6 +242,226 @@ public partial class @PlayerInputController : IInputActionCollection2, IDisposab
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""TankController"",
+            ""id"": ""58618691-8c75-442b-bfe2-5528dad893a4"",
+            ""actions"": [
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""ad3b0348-5057-4531-82af-cf693562556b"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Run"",
+                    ""type"": ""Button"",
+                    ""id"": ""235d5757-5d5b-461d-b9f6-31913e04634e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""dcb0eb4f-2988-450d-96eb-d54701ea364b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Flashlight"",
+                    ""type"": ""Button"",
+                    ""id"": ""bb7092c2-8fff-4fdf-b5b6-2013cdad288d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""c902d651-fef0-40bf-8667-8623db1fee1e"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""16f8205a-782d-4192-9051-824370161635"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""235b6797-78c0-4eff-90a5-e105b4ba17a4"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""361a11b3-bc1a-415d-914e-a6a0dc9e69f1"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""4f68d949-2f29-476a-a308-8bd2d4c34418"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Gamepad"",
+                    ""id"": ""253defdf-c571-45e5-9d5d-ed903e6e261c"",
+                    ""path"": ""2DVector(mode=2)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""cfcaa400-2b04-4e43-9a62-99771ee99d71"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""07f3371f-b248-4cd3-8fa2-c27b23f1dd65"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""7af3dc47-df75-4775-8f64-a8c3c71ed4b8"",
+                    ""path"": ""<Gamepad>/rightStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""7d6b93ec-5d61-487b-951a-c5cd7b58990c"",
+                    ""path"": ""<Gamepad>/rightStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""380ee1af-f43a-4b44-a531-aa6ac1e0bd94"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Run"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""af63ffc4-f663-4e47-bb7e-3e73e89e9250"",
+                    ""path"": ""<Gamepad>/leftStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Run"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4a8446ed-2168-4752-a0d6-f1cb915fb470"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8138173b-bddc-4a21-8782-92ca18122190"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e013bd59-9378-47dd-85b7-689e4f9dfb4d"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Flashlight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e9cf93f3-b18e-404c-a92f-70332c56be77"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Flashlight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -252,6 +472,12 @@ public partial class @PlayerInputController : IInputActionCollection2, IDisposab
         m_MordernController_Run = m_MordernController.FindAction("Run", throwIfNotFound: true);
         m_MordernController_Interact = m_MordernController.FindAction("Interact", throwIfNotFound: true);
         m_MordernController_Flashlight = m_MordernController.FindAction("Flashlight", throwIfNotFound: true);
+        // TankController
+        m_TankController = asset.FindActionMap("TankController", throwIfNotFound: true);
+        m_TankController_Move = m_TankController.FindAction("Move", throwIfNotFound: true);
+        m_TankController_Run = m_TankController.FindAction("Run", throwIfNotFound: true);
+        m_TankController_Interact = m_TankController.FindAction("Interact", throwIfNotFound: true);
+        m_TankController_Flashlight = m_TankController.FindAction("Flashlight", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -364,7 +590,71 @@ public partial class @PlayerInputController : IInputActionCollection2, IDisposab
         }
     }
     public MordernControllerActions @MordernController => new MordernControllerActions(this);
+
+    // TankController
+    private readonly InputActionMap m_TankController;
+    private ITankControllerActions m_TankControllerActionsCallbackInterface;
+    private readonly InputAction m_TankController_Move;
+    private readonly InputAction m_TankController_Run;
+    private readonly InputAction m_TankController_Interact;
+    private readonly InputAction m_TankController_Flashlight;
+    public struct TankControllerActions
+    {
+        private @PlayerInputController m_Wrapper;
+        public TankControllerActions(@PlayerInputController wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_TankController_Move;
+        public InputAction @Run => m_Wrapper.m_TankController_Run;
+        public InputAction @Interact => m_Wrapper.m_TankController_Interact;
+        public InputAction @Flashlight => m_Wrapper.m_TankController_Flashlight;
+        public InputActionMap Get() { return m_Wrapper.m_TankController; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(TankControllerActions set) { return set.Get(); }
+        public void SetCallbacks(ITankControllerActions instance)
+        {
+            if (m_Wrapper.m_TankControllerActionsCallbackInterface != null)
+            {
+                @Move.started -= m_Wrapper.m_TankControllerActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_TankControllerActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_TankControllerActionsCallbackInterface.OnMove;
+                @Run.started -= m_Wrapper.m_TankControllerActionsCallbackInterface.OnRun;
+                @Run.performed -= m_Wrapper.m_TankControllerActionsCallbackInterface.OnRun;
+                @Run.canceled -= m_Wrapper.m_TankControllerActionsCallbackInterface.OnRun;
+                @Interact.started -= m_Wrapper.m_TankControllerActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_TankControllerActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_TankControllerActionsCallbackInterface.OnInteract;
+                @Flashlight.started -= m_Wrapper.m_TankControllerActionsCallbackInterface.OnFlashlight;
+                @Flashlight.performed -= m_Wrapper.m_TankControllerActionsCallbackInterface.OnFlashlight;
+                @Flashlight.canceled -= m_Wrapper.m_TankControllerActionsCallbackInterface.OnFlashlight;
+            }
+            m_Wrapper.m_TankControllerActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Move.started += instance.OnMove;
+                @Move.performed += instance.OnMove;
+                @Move.canceled += instance.OnMove;
+                @Run.started += instance.OnRun;
+                @Run.performed += instance.OnRun;
+                @Run.canceled += instance.OnRun;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
+                @Flashlight.started += instance.OnFlashlight;
+                @Flashlight.performed += instance.OnFlashlight;
+                @Flashlight.canceled += instance.OnFlashlight;
+            }
+        }
+    }
+    public TankControllerActions @TankController => new TankControllerActions(this);
     public interface IMordernControllerActions
+    {
+        void OnMove(InputAction.CallbackContext context);
+        void OnRun(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
+        void OnFlashlight(InputAction.CallbackContext context);
+    }
+    public interface ITankControllerActions
     {
         void OnMove(InputAction.CallbackContext context);
         void OnRun(InputAction.CallbackContext context);

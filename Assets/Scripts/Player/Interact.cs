@@ -41,17 +41,14 @@ public class Interact : MonoBehaviour
          {
             _canInteract = true;
             cacheHit = hit;
-         }
-         else
-         {
-            _canInteract = true;
-            cacheHit = new RaycastHit();
+            Debug.Log("HIT COLLIDER != NULL");
          }
       }
       else
       {
          _canInteract = true;
          cacheHit = new RaycastHit();
+         Debug.Log("HIT NULL");
       }
    }
 
