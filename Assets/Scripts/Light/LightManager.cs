@@ -20,18 +20,19 @@ public class LightManager : MonoBehaviour
         switch (switchersOn)
         {
             case 0:
+                
                 break;
             case 1:
-                level1.SetActive(true);
+               
                 break;
             case 2:
-                level2.SetActive(true);
+               
                 break;
             case 3:
-                level3.SetActive(true);
+                
                 break;
             case 4:
-                level4.SetActive(true);
+                
                 break;
         }
     }

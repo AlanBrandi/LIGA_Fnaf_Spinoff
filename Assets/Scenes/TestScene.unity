@@ -1677,7 +1677,7 @@ PrefabInstance:
     - target: {fileID: 2288853458911056856, guid: f5a691a80a7d74944b19f868496bc59f, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1949146754}
     - target: {fileID: 2288853458911056856, guid: f5a691a80a7d74944b19f868496bc59f, type: 3}
       propertyPath: fadeInOut
       value: 
@@ -2148,7 +2148,7 @@ PrefabInstance:
     - target: {fileID: 2288853458911056856, guid: f5a691a80a7d74944b19f868496bc59f, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1949146754}
     - target: {fileID: 2288853458911056856, guid: f5a691a80a7d74944b19f868496bc59f, type: 3}
       propertyPath: fadeInOut
       value: 
@@ -3072,7 +3072,7 @@ PrefabInstance:
     - target: {fileID: 2288853458911056856, guid: f5a691a80a7d74944b19f868496bc59f, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1949146754}
     - target: {fileID: 2288853458911056856, guid: f5a691a80a7d74944b19f868496bc59f, type: 3}
       propertyPath: fadeInOut
       value: 
@@ -20352,7 +20352,7 @@ PrefabInstance:
     - target: {fileID: 2288853458911056856, guid: f5a691a80a7d74944b19f868496bc59f, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1949146754}
     - target: {fileID: 2288853458911056856, guid: f5a691a80a7d74944b19f868496bc59f, type: 3}
       propertyPath: fadeInOut
       value: 
@@ -28775,7 +28775,7 @@ PrefabInstance:
     - target: {fileID: 2288853458911056856, guid: f5a691a80a7d74944b19f868496bc59f, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1949146754}
     - target: {fileID: 2288853458911056856, guid: f5a691a80a7d74944b19f868496bc59f, type: 3}
       propertyPath: fadeInOut
       value: 
@@ -29777,6 +29777,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9150c68362c324146858420b664a8bc6, type: 3}
+--- !u!1 &1949146754 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4846025476047323582, guid: 9150c68362c324146858420b664a8bc6, type: 3}
+  m_PrefabInstance: {fileID: 1949146753}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1960149110
 GameObject:
   m_ObjectHideFlags: 0
@@ -30100,7 +30105,7 @@ PrefabInstance:
     - target: {fileID: 2288853458911056856, guid: f5a691a80a7d74944b19f868496bc59f, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1949146754}
     - target: {fileID: 2288853458911056856, guid: f5a691a80a7d74944b19f868496bc59f, type: 3}
       propertyPath: fadeInOut
       value: 
@@ -31456,7 +31461,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   switchManager: {fileID: 1081363636}
-  level1: {fileID: 968188840}
+  level1: {fileID: 0}
   level2: {fileID: 0}
   level3: {fileID: 0}
   level4: {fileID: 0}

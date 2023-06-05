@@ -19,7 +19,11 @@ public class SwitchCamera : MonoBehaviour
             {
                 //Switch for the new camera.
                 SwitchCameras();
-                other.GetComponent<PlayerMovement>().GetNewCameraReference();
+                PlayerMovement component;
+                if (other.TryGetComponent<PlayerMovement>(out component))
+                {
+                    component.GetNewCameraReference();
+                }
             }
         }
     }
