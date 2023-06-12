@@ -7,14 +7,11 @@ using UnityEngine.InputSystem;
 
 public class Interact : MonoBehaviour
 {
-   //VERSÃO 0.1
-   //FALTA ORGANIZAR ETC.
-   [SerializeField] private float raycastDistance;
    [SerializeField] private LayerMask layerMask;
 
    private bool _canInteract;
    private PlayerInput _playerInput;
-   private RaycastHit cacheHit;
+   private GameObject cacheHit;
    private RaycastHit nullHit;
 
    private void Awake()
@@ -31,24 +28,28 @@ public class Interact : MonoBehaviour
    {
       _playerInput.actions["Interact"].performed -= InteractWith;
    }
-
+   
    private void Update()
    { 
-      Physics.Raycast(transform.position,transform.forward, out RaycastHit hit, raycastDistance, layerMask);
-      if (hit.collider != null)
+      Collider[] hitColliders = Physics.OverlapSphere(transform.position, 2, layerMask);
+
+      foreach (Collider hitCollider in hitColliders)
       {
-         if (hit.collider.CompareTag("Switch") || hit.collider.CompareTag("Door"))
+         if (hitCollider != null)
+         {
+            if (hitCollider.CompareTag("Switch") || hitCollider.CompareTag("Door"))
+            {
+               _canInteract = true;
+               cacheHit = hitCollider.gameObject;
+               Debug.Log("HIT COLLIDER != NULL");
+            }
+         }
+         else
          {
             _canInteract = true;
-            cacheHit = hit;
-            Debug.Log("HIT COLLIDER != NULL");
+            cacheHit = new GameObject();
+            Debug.Log("HIT NULL");
          }
-      }
-      else
-      {
-         _canInteract = true;
-         cacheHit = new RaycastHit();
-         Debug.Log("HIT NULL");
       }
    }
 
@@ -56,13 +57,13 @@ public class Interact : MonoBehaviour
    {
       if (_canInteract)
       {
-         switch (cacheHit.collider.tag)
+         switch (cacheHit.tag)
          {
             case "Switch":
-               cacheHit.collider.GetComponent<Switch>().ActivateSwitch();
+               cacheHit.GetComponent<Switch>().ActivateSwitch();
                break;
             case "Door":
-               cacheHit.collider.GetComponent<Door>().OpenDoor();
+               cacheHit.GetComponent<Door>().OpenDoor();
                break;
          }
       }

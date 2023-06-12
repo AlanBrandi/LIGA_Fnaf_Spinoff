@@ -2,8 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class SwitchManager : MonoBehaviour
 {
@@ -12,7 +14,10 @@ public class SwitchManager : MonoBehaviour
     [Header("Switcher config")]
     [SerializeField] private float timeToWait = 1f;
     [SerializeField] private List<Transform> spawnLocation;
+    [SerializeField] private Transform finalLocation;
     [SerializeField] private GameObject switcherGO;
+
+    private bool LastSwitchAtivated = false;
     
     [HideInInspector]
     public UnityEvent<int> onSwitchersOnChanged;
@@ -93,7 +98,13 @@ public class SwitchManager : MonoBehaviour
                 NotifySwitchers();
                 break;
             case 4:
-                NotifySwitchers();
+                if (!LastSwitchAtivated)
+                {
+                    GameObject var = Instantiate(switcherGO, finalLocation.position, finalLocation.rotation);
+                    _switchers.Add(var.GetComponent<Switch>());
+                    LastSwitchAtivated = true;
+                    NotifySwitchers(); 
+                }
                 break;
             case 5:
                 NotifySwitchers();
