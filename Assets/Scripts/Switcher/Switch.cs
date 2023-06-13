@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -11,7 +12,11 @@ public class Switch : MonoBehaviour
    public bool counted = false;
    
    private Animator _animator;
-   private bool _isActive = false; 
+   private bool _isActive = false;
+
+   [Header("AudioFX")]
+   [SerializeField] private AudioSource lever;
+   [SerializeField]private AudioSource switchOn;
 
    private void Awake()
    {
@@ -24,10 +29,14 @@ public class Switch : MonoBehaviour
       {
          _animator.SetBool("Active", true);
          _isActive = true;
-         //playSound
+         lever.Play();
       }
    }
 
+   public void PlayHumSound()
+   {
+      switchOn.Play();
+   }
    public bool IsActive()
    {
       return _isActive;
