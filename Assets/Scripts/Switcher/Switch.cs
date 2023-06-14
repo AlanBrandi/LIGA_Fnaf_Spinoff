@@ -32,10 +32,20 @@ public class Switch : MonoBehaviour
          lever.Play();
       }
    }
-
    public void PlayHumSound()
    {
-      switchOn.Play();
+      if (_isActive)
+      {
+         switchOn.Play();   
+      }
+   }
+
+   public void StopHumSound()
+   {
+      if (_isActive)
+      {
+         switchOn.Stop();   
+      }
    }
    public bool IsActive()
    {
