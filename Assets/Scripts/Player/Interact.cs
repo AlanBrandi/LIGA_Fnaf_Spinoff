@@ -12,7 +12,6 @@ public class Interact : MonoBehaviour
    private bool _canInteract;
    private PlayerInput _playerInput;
    private GameObject cacheHit;
-   private RaycastHit nullHit;
 
    private void Awake()
    {
@@ -30,9 +29,10 @@ public class Interact : MonoBehaviour
    }
    
    private void Update()
-   { 
+   {
+      cacheHit = null;
       Collider[] hitColliders = Physics.OverlapSphere(transform.position, 2, layerMask);
-
+      
       foreach (Collider hitCollider in hitColliders)
       {
          if (hitCollider != null)
@@ -43,11 +43,14 @@ public class Interact : MonoBehaviour
                cacheHit = hitCollider.gameObject;
                Debug.Log("HIT COLLIDER != NULL");
             }
+            else
+            {
+               _canInteract = false;
+            }
          }
          else
          {
-            _canInteract = true;
-            cacheHit = new GameObject();
+            _canInteract = false;
             Debug.Log("HIT NULL");
          }
       }
@@ -57,14 +60,17 @@ public class Interact : MonoBehaviour
    {
       if (_canInteract)
       {
-         switch (cacheHit.tag)
+         if (cacheHit != null)
          {
-            case "Switch":
-               cacheHit.GetComponent<Switch>().ActivateSwitch();
-               break;
-            case "Door":
-               cacheHit.GetComponent<Door>().OpenDoor();
-               break;
+            switch (cacheHit.tag)
+            {
+               case "Switch":
+                  cacheHit.GetComponent<Switch>().ActivateSwitch();
+                  break;
+               case "Door":
+                  cacheHit.GetComponent<Door>().OpenDoor();
+                  break;
+            }
          }
       }
    }
